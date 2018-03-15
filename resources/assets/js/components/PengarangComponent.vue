@@ -115,13 +115,16 @@
         created:function(){
             this.fectAuthors();
         },
+        mounted(){
+            console.log('Pengarang Component')
+        },
         methods:{
             fectAuthors(){
                 var vm=this
                 axios.get(`${this.url}`)
                 .then(function (response) {
                     Vue.set(vm.$data,'authors',response.data)
-                    console.log(response.data)
+                    // console.log(response.data)
                 })
             },
 

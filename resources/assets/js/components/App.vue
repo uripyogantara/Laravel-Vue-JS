@@ -5,9 +5,9 @@
                 <router-link to="/">Brand Name</router-link>
             </div>
             <ul class="nav navbar-nav navbar-left">
-                <li><router-link to="/home/book">Buku</router-link></li>
-                <li><router-link to="/home/penerbit">Penerbit</router-link></li>
-                <li><router-link to="/home/pengarang">Pengarang</router-link></li>
+                <li><router-link to="/book">Buku</router-link></li>
+                <li><router-link to="/penerbit">Penerbit</router-link></li>
+                <li><router-link to="/pengarang">Pengarang</router-link></li>
             </ul>
         </div>
         <router-view></router-view>
