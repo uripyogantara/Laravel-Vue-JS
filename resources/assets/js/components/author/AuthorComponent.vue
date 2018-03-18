@@ -114,6 +114,9 @@
         },
         created:function(){
             this.fectAuthors();
+            setInterval(function () {
+                this.fectAuthors();
+            }.bind(this), 4000);
         },
         mounted(){
             console.log('Pengarang Component')

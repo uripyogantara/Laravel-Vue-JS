@@ -37,6 +37,9 @@ export default {
     },
     created:function(){
         this.$store.dispatch('getPublishers')
+        setInterval(function () {
+            this.$store.dispatch('getPublishers')
+        }.bind(this), 4000);
     },
     computed:{
         publishers(){
