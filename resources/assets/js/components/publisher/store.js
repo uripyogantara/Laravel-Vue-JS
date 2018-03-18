@@ -1,7 +1,7 @@
 export default{
     state:{
         publishers:[],
-        publisher:{
+        newPublisher:{
             'name':'',
             'phone':'',
             'address':'',
@@ -12,15 +12,14 @@ export default{
     mutations:{
         addPublisher:(state,data)=>{
             state.publishers.push(data)
-            state.publisher={
+            state.newPublisher={
                 'name':'',
                 'phone':'',
                 'address':'',
                 'id':''
             }  
         },
-        updatePublisher:(state,data)=>{
-            // state.publishers.push(data)
+        updatePublishers:(state,data)=>{
             var index = -1
             for (var i = 0; i < state.publishers.length; i++) {
                 if (state.publishers[i]['id'] == data.id) {
@@ -28,13 +27,11 @@ export default{
                     break
                 }
             }
-            console.log(index)
             if (index > -1) {
                 state.publishers.splice(index, 1,data);
             }
-            // console.log(state.publishers)
             state.isInsert=true
-            state.publisher={
+            state.newPublisher={
                 'name':'',
                 'phone':'',
                 'address':'',
@@ -44,8 +41,9 @@ export default{
         getPublishers(state,data){
             state.publishers=data
         },
-        updateStatePublisher(state,value){
-            state.publisher=value
+        updateNewPublisher(state,value){
+            state.newPublisher=value
+            console.log(value)
         },
         deletePublisher(state,data){
             var index = state.publishers.indexOf(data);
@@ -53,36 +51,38 @@ export default{
         },
         doInsert(state){
             state.isInsert=true
-            state.publisher={
+            state.newPublisher={
                 'name':'',
                 'phone':'',
                 'address':'',
                 'id':''
             }
         },
-        doUpdate(state,publisher){
+        doUpdate(state,newPublisher){
             state.isInsert=false
-            state.publisher={
-                'name':publisher.name,
-                'phone':publisher.phone,
-                'address':publisher.address,
-                'id':publisher.id
+            state.newPublisher={
+                'name':newPublisher.name,
+                'phone':newPublisher.phone,
+                'address':newPublisher.address,
+                'id':newPublisher.id
             }
         }
     },
     actions:{
-        addPublisher:(context,data)=>{
+        addPublisher:(context)=>{
+            var data=context.state.newPublisher
             axios.post('/api/publisher',data)
             .then(function(response){
                 console.log('add sukses')
                 context.commit('addPublisher',response.data)
             })
         },
-        updatePublisher:(context,data)=>{
+        updatePublisher:(context)=>{
+            var data=context.state.newPublisher
             axios.put('/api/publisher/'+data.id,data)
             .then(function(response){
                 console.log('update sukses')
-                context.commit('updatePublisher',data)
+                context.commit('updatePublishers',data)
             })
         },
         getPublishers:(context)=>{

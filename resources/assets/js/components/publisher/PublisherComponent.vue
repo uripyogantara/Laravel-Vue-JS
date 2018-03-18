@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <add-publisher></add-publisher>    
+                <form-publisher></form-publisher>    
             </div>
             <div class="col-md-8">
                 <list-publisher></list-publisher>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-    import AddPublisher from './publisher/AddPublisher.vue'
-    import ListPublisher from './publisher/ListPublisher.vue'
+    import FormPublisher from './FormPublisher.vue'
+    import ListPublisher from './ListPublisher.vue'
     export default {
         components:{
-            'add-publisher':AddPublisher,
+            'form-publisher':FormPublisher,
             'list-publisher':ListPublisher
         }
     }

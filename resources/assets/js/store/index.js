@@ -9,6 +9,5 @@ Vue.use(VueX)
 export default new VueX.Store({
     modules:{
         publisherStore
-    },
-    strict:true
+    }
 })

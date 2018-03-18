@@ -43196,7 +43196,7 @@ var render = function() {
           _c(
             "li",
             [
-              _c("router-link", { attrs: { to: "/penerbit" } }, [
+              _c("router-link", { attrs: { to: "/publisher" } }, [
                 _vm._v("Penerbit")
               ])
             ],
@@ -43206,7 +43206,7 @@ var render = function() {
           _c(
             "li",
             [
-              _c("router-link", { attrs: { to: "/pengarang" } }, [
+              _c("router-link", { attrs: { to: "/author" } }, [
                 _vm._v("Pengarang")
               ])
             ],
@@ -43265,17 +43265,17 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     }, {
         path: '/book',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(49)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(76)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
-        path: '/penerbit',
+        path: '/publisher',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(50)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(77)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
-        path: '/pengarang',
+        path: '/author',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(51)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(78)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }]
 });
@@ -45934,8 +45934,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     modules: {
         publisherStore: __WEBPACK_IMPORTED_MODULE_3__components_publisher_store__["a" /* default */]
-    },
-    strict: true
+    }
 }));
 
 /***/ }),
@@ -46891,7 +46890,7 @@ var index_esm = {
 /* harmony default export */ __webpack_exports__["a"] = ({
     state: {
         publishers: [],
-        publisher: {
+        newPublisher: {
             'name': '',
             'phone': '',
             'address': '',
@@ -46902,15 +46901,14 @@ var index_esm = {
     mutations: {
         addPublisher: function addPublisher(state, data) {
             state.publishers.push(data);
-            state.publisher = {
+            state.newPublisher = {
                 'name': '',
                 'phone': '',
                 'address': '',
                 'id': ''
             };
         },
-        updatePublisher: function updatePublisher(state, data) {
-            // state.publishers.push(data)
+        updatePublishers: function updatePublishers(state, data) {
             var index = -1;
             for (var i = 0; i < state.publishers.length; i++) {
                 if (state.publishers[i]['id'] == data.id) {
@@ -46918,13 +46916,11 @@ var index_esm = {
                     break;
                 }
             }
-            console.log(index);
             if (index > -1) {
                 state.publishers.splice(index, 1, data);
             }
-            // console.log(state.publishers)
             state.isInsert = true;
-            state.publisher = {
+            state.newPublisher = {
                 'name': '',
                 'phone': '',
                 'address': '',
@@ -46934,8 +46930,9 @@ var index_esm = {
         getPublishers: function getPublishers(state, data) {
             state.publishers = data;
         },
-        updateStatePublisher: function updateStatePublisher(state, value) {
-            state.publisher = value;
+        updateNewPublisher: function updateNewPublisher(state, value) {
+            state.newPublisher = value;
+            console.log(value);
         },
         deletePublisher: function deletePublisher(state, data) {
             var index = state.publishers.indexOf(data);
@@ -46943,34 +46940,36 @@ var index_esm = {
         },
         doInsert: function doInsert(state) {
             state.isInsert = true;
-            state.publisher = {
+            state.newPublisher = {
                 'name': '',
                 'phone': '',
                 'address': '',
                 'id': ''
             };
         },
-        doUpdate: function doUpdate(state, publisher) {
+        doUpdate: function doUpdate(state, newPublisher) {
             state.isInsert = false;
-            state.publisher = {
-                'name': publisher.name,
-                'phone': publisher.phone,
-                'address': publisher.address,
-                'id': publisher.id
+            state.newPublisher = {
+                'name': newPublisher.name,
+                'phone': newPublisher.phone,
+                'address': newPublisher.address,
+                'id': newPublisher.id
             };
         }
     },
     actions: {
-        addPublisher: function addPublisher(context, data) {
+        addPublisher: function addPublisher(context) {
+            var data = context.state.newPublisher;
             axios.post('/api/publisher', data).then(function (response) {
                 console.log('add sukses');
                 context.commit('addPublisher', response.data);
             });
         },
-        updatePublisher: function updatePublisher(context, data) {
+        updatePublisher: function updatePublisher(context) {
+            var data = context.state.newPublisher;
             axios.put('/api/publisher/' + data.id, data).then(function (response) {
                 console.log('update sukses');
-                context.commit('updatePublisher', data);
+                context.commit('updatePublishers', data);
             });
         },
         getPublishers: function getPublishers(context) {

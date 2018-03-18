@@ -27,19 +27,19 @@ const router = new Router({
         {
             path: '/book', 
             component:function(resolve){
-                require(['../components/BookComponent.vue'],resolve)
+                require(['../components/Book/BookComponent.vue'],resolve)
             }
         },
         {
-            path: '/penerbit', 
+            path: '/publisher', 
             component: function(resolve){
-                require(['../components/PenerbitComponent.vue'],resolve)
+                require(['../components/publisher/PublisherComponent.vue'],resolve)
             }
         },
         {
-            path: '/pengarang', 
+            path: '/author', 
             component: function(resolve){
-                require(['../components/PengarangComponent.vue'],resolve)
+                require(['../components/author/AuthorComponent.vue'],resolve)
             }
         },
     ]
