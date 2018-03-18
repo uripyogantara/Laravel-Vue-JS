@@ -3,13 +3,13 @@
         <h2>Form Tambah Publisher</h2>
         <form v-on:submit.prevent="addPublisher">
             <div class="form-group">
-                <input class="form-control" type="text" name="name" placeholder="Name" v-model="newPublisher.name">
+                <input class="form-control" type="text" name="name" placeholder="Name" v-model="name">
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" name="address" placeholder="Address" v-model="newPublisher.address"> 
+                <input class="form-control" type="text" name="address" placeholder="Address" v-model="address"> 
             </div>
             <div class="form-group">
-                <input class="form-control" type="number" name="phone" placeholder="Phone" v-model="newPublisher.phone">
+                <input class="form-control" type="number" name="phone" placeholder="Phone" v-model="phone">
             </div>
             <input type="submit" value="Simpan" class="btn btn-primary btn-block" v-if="isInsert">
             <div v-else>
@@ -31,14 +31,30 @@ export default {
         isInsert(){
             return this.$store.state.publisherStore.isInsert
         },
-        newPublisher:{
+        name:{
             get(){
-                return this.$store.state.publisherStore.newPublisher
+                return this.$store.state.publisherStore.newPublisher.name
             },
             set(value){
-                this.$store.commit('updateNewPublisher',value)
+                this.$store.commit('updatePublisherName',value)
             }
-        }
+        },
+        address:{
+            get(){
+                return this.$store.state.publisherStore.newPublisher.address
+            },
+            set(value){
+                this.$store.commit('updatePublisherAddress',value)
+            }
+        },
+        phone:{
+            get(){
+                return this.$store.state.publisherStore.newPublisher.phone
+            },
+            set(value){
+                this.$store.commit('updatePublisherPhone',value)
+            }
+        },
     },
     methods:{
         addPublisher(){

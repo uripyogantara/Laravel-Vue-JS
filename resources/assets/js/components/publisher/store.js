@@ -41,9 +41,14 @@ export default{
         getPublishers(state,data){
             state.publishers=data
         },
-        updateNewPublisher(state,value){
-            state.newPublisher=value
-            console.log(value)
+        updatePublisherName(state,value){
+            state.newPublisher.name=value
+        },
+        updatePublisherAddress(state,value){
+            state.newPublisher.address=value
+        },
+        updatePublisherPhone(state,value){
+            state.newPublisher.phone=value
         },
         deletePublisher(state,data){
             var index = state.publishers.indexOf(data);

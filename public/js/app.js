@@ -45934,7 +45934,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     modules: {
         publisherStore: __WEBPACK_IMPORTED_MODULE_3__components_publisher_store__["a" /* default */]
-    }
+    },
+    strict: true
 }));
 
 /***/ }),
@@ -46930,9 +46931,14 @@ var index_esm = {
         getPublishers: function getPublishers(state, data) {
             state.publishers = data;
         },
-        updateNewPublisher: function updateNewPublisher(state, value) {
-            state.newPublisher = value;
-            console.log(value);
+        updatePublisherName: function updatePublisherName(state, value) {
+            state.newPublisher.name = value;
+        },
+        updatePublisherAddress: function updatePublisherAddress(state, value) {
+            state.newPublisher.address = value;
+        },
+        updatePublisherPhone: function updatePublisherPhone(state, value) {
+            state.newPublisher.phone = value;
         },
         deletePublisher: function deletePublisher(state, data) {
             var index = state.publishers.indexOf(data);

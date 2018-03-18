@@ -394,12 +394,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.publisherStore.isInsert;
         },
 
-        newPublisher: {
+        name: {
             get: function get() {
-                return this.$store.state.publisherStore.newPublisher;
+                return this.$store.state.publisherStore.newPublisher.name;
             },
             set: function set(value) {
-                this.$store.commit('updateNewPublisher', value);
+                this.$store.commit('updatePublisherName', value);
+            }
+        },
+        address: {
+            get: function get() {
+                return this.$store.state.publisherStore.newPublisher.address;
+            },
+            set: function set(value) {
+                this.$store.commit('updatePublisherAddress', value);
+            }
+        },
+        phone: {
+            get: function get() {
+                return this.$store.state.publisherStore.newPublisher.phone;
+            },
+            set: function set(value) {
+                this.$store.commit('updatePublisherPhone', value);
             }
         }
     },
@@ -447,19 +463,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newPublisher.name,
-                expression: "newPublisher.name"
+                value: _vm.name,
+                expression: "name"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "name", placeholder: "Name" },
-            domProps: { value: _vm.newPublisher.name },
+            domProps: { value: _vm.name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newPublisher, "name", $event.target.value)
+                _vm.name = $event.target.value
               }
             }
           })
@@ -471,19 +487,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newPublisher.address,
-                expression: "newPublisher.address"
+                value: _vm.address,
+                expression: "address"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "address", placeholder: "Address" },
-            domProps: { value: _vm.newPublisher.address },
+            domProps: { value: _vm.address },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newPublisher, "address", $event.target.value)
+                _vm.address = $event.target.value
               }
             }
           })
@@ -495,19 +511,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newPublisher.phone,
-                expression: "newPublisher.phone"
+                value: _vm.phone,
+                expression: "phone"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "number", name: "phone", placeholder: "Phone" },
-            domProps: { value: _vm.newPublisher.phone },
+            domProps: { value: _vm.phone },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newPublisher, "phone", $event.target.value)
+                _vm.phone = $event.target.value
               }
             }
           })
