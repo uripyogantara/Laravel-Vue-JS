@@ -1,23 +1,23 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Penerbit</div>
-
-                    <div class="panel-body">
-                        Dashboard Penerbit
-                    </div>
-                </div>
+            <div class="col-md-4">
+                <add-publisher></add-publisher>    
+            </div>
+            <div class="col-md-8">
+                <list-publisher></list-publisher>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import AddPublisher from './publisher/AddPublisher.vue'
+    import ListPublisher from './publisher/ListPublisher.vue'
     export default {
-        mounted() {
-            console.log('Penerbit Component')
+        components:{
+            'add-publisher':AddPublisher,
+            'list-publisher':ListPublisher
         }
     }
 </script>

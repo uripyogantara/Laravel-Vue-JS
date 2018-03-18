@@ -77,17 +77,17 @@
                 </div>
                 <div class="modal-body">
                     <form v-on:submit.prevent="editAuthor(editData.id)">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="name" placeholder="Name" v-model="editData.name">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="address" placeholder="Address" v-model="editData.address"> 
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="number" name="phone" placeholder="Phone" v-model="editData.phone">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Edit</button>
-                            </form>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Name" v-model="editData.name">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="address" placeholder="Address" v-model="editData.address"> 
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="phone" placeholder="Phone" v-model="editData.phone">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
